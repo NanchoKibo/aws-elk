@@ -1,20 +1,19 @@
 #!/bin/bash
 
-# Install curl and download keys
+sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
-sudo apt-get install curl -y
 
-sudo curl http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-sudo echo deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main > sudo /etc/apt/sources.list.d/elasticsearch.list
+# Install Java
+sudo apt-get install oracle-java7-installer -y
 
-sudo curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add -
-sudo echo deb http://nginx.org/packages/ubuntu/ trusty nginx > sudo /etc/apt/sources.list.d/nginx.list
+# Install Elasticsearch, nginx and logstash
+wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo echo 'deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main' | sudo tee /etc/apt/sources.list.d/elasticsearch.list
 
-sudo echo deb http://packages.elasticsearch.org/logstash/1.4/debian stable main > sudo /etc/apt/sources.list.d/logstash.list
+sudo echo 'deb http://packages.elasticsearch.org/logstash/1.4/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash.list
 
-# Install ELK and nginx
 sudo apt-get update
-sudo apt-get install openjdk-7-jdk elasticsearch logstash=1.4.2-1-2c0f5a1 nginx -y
+sudo apt-get -y install elasticsearch=1.1.1 logstash=1.4.2-1-2c0f5a1 nginx
 
 # Install Kibana
 sudo mkdir /opt/kibana
