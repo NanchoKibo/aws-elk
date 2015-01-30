@@ -26,3 +26,8 @@ sudo cp ~/elk/kibana-config.js /opt/kibana/config.js
 ### configure nginx
 sudo cp ~/elk/nginx.conf /etc/nginx/nginx.conf
 sudo cp ~/elk/nginx-site.conf /etc/nginx/sites-available/default
+
+# Start all the services
+sudo service elasticsearch start
+sudo service logstash start
+sudo service nginx start
