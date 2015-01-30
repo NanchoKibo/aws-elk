@@ -25,7 +25,7 @@ tar xvf kibana-3.1.1.tar.gz -C /opt/kibana --strip-components=1 \
 rm -f kibana-3.1.1.tar.gz
 
 # Configure and start elasticsearch
-cp /home/ubuntu/elk/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
+cp ~/elk/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 
 
 ### configure and start logstash
@@ -33,31 +33,31 @@ cp /home/ubuntu/elk/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 # cert/key
 mkdir -p /etc/pki/tls/certs
 mkdir /etc/pki/tls/private
-cp /home/ubuntu/elk/logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
-cp /home/ubuntu/elk/logstash-forwarder.key /etc/pki/tls/private/logstash-forwarder.key
+cp ~/elk/logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
+cp ~/elk/logstash-forwarder.key /etc/pki/tls/private/logstash-forwarder.key
 
 # filters
-cp /home/ubuntu/elk/01-logstash-input.conf /etc/logstash/conf.d/01-logstash-input.conf
-cp /home/ubuntu/elk/10-syslog.conf /etc/logstash/conf.d/10-syslog.conf
-cp /home/ubuntu/elk/11-nginx.conf /etc/logstash/conf.d/11-nginx.conf
+cp ~/elk/01-logstash-input.conf /etc/logstash/conf.d/01-logstash-input.conf
+cp ~/elk/10-syslog.conf /etc/logstash/conf.d/10-syslog.conf
+cp ~/elk/11-nginx.conf /etc/logstash/conf.d/11-nginx.conf
 
 # patterns
-cp /home/ubuntu/elk/nginx.pattern /opt/logstash/patterns/nginx
+cp ~/elk/nginx.pattern /opt/logstash/patterns/nginx
 chown logstash:logstash /opt/logstash/patterns/nginx
 
 ### configure kibana
 
-cp /home/ubuntu/elk/kibana-config.js /opt/kibana/config.js
+cp ~/elk/kibana-config.js /opt/kibana/config.js
 
 
 ### configure and start nginx
 
-cp /home/ubuntu/elk/nginx.conf /etc/nginx/nginx.conf
+cp ~/elk/nginx.conf /etc/nginx/nginx.conf
 echo "daemon off;" >> /etc/nginx/nginx.conf
 
-cp /home/ubuntu/elk/nginx-site.conf /etc/nginx/conf.d/default.conf
+cp ~/elk/nginx-site.conf /etc/nginx/conf.d/default.conf
 
-cp /home/ubuntu/elk/start.sh /usr/local/bin/start.sh
+cp ~/elk/start.sh /usr/local/bin/start.sh
 chmod +x /usr/local/bin/start.sh
 
 # Start all the services
