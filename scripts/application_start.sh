@@ -1,5 +1,7 @@
 #!/bin/bash
 
-# Stop all servers and start the server as a daemon
-forever stopall
-forever start /home/ubuntu/test/app.js
+# Start all the services
+
+sudo service elasticsearch start
+sudo service logstash start
+sudo service nginx start
