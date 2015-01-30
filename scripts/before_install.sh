@@ -4,12 +4,13 @@ sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
 
 # Install Java
+sudo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+sudo echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
 sudo apt-get install oracle-java7-installer -y
 
 # Install Elasticsearch, nginx and logstash
 wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
 sudo echo 'deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main' | sudo tee /etc/apt/sources.list.d/elasticsearch.list
-
 sudo echo 'deb http://packages.elasticsearch.org/logstash/1.4/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash.list
 
 sudo apt-get update
