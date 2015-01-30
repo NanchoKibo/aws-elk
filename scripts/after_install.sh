@@ -25,7 +25,7 @@ sudo chown logstash:logstash /opt/logstash/patterns/nginx
 sudo cp ~/elk/kibana-config.js /opt/kibana/config.js
 
 
-### configure and start nginx
+### configure nginx
 
 sudo cp ~/elk/nginx.conf /etc/nginx/nginx.conf
 sudo echo "daemon off;" >> sudo /etc/nginx/nginx.conf
