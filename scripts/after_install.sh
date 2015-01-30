@@ -25,6 +25,6 @@ sudo cp ~/elk/kibana-config.js /opt/kibana/config.js
 
 ### configure nginx
 sudo cp ~/elk/nginx.conf /etc/nginx/nginx.conf
-sudo echo "daemon off;" | sudo tee /etc/nginx/nginx.conf
+sudo echo "daemon off;" | sudo tee -a /etc/nginx/nginx.conf
 
 sudo cp ~/elk/nginx-site.conf /etc/nginx/conf.d/default.conf
