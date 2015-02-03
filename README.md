@@ -1,3 +1,3 @@
 # aws-elk with CodeDeploy
 
-test 6
+test 7
