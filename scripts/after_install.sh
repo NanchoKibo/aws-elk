@@ -17,4 +17,4 @@ sudo cp ~/elk/config/nginx-site.conf /etc/nginx/sites-available/default
 # Start all the services
 sudo service elasticsearch start
 sudo service logstash start
-sudo service nginx start
+sudo service nginx restart
