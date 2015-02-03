@@ -1,20 +1,22 @@
 #!/bin/bash
 
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update
-
-# Install Java
-sudo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-sudo echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
-sudo apt-get install oracle-java7-installer -y
-
-# Install Elasticsearch, nginx and logstash
-wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-sudo echo 'deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main' | sudo tee /etc/apt/sources.list.d/elasticsearch.list
+# Add ELK repositories
+sudo wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
 sudo echo 'deb http://packages.elasticsearch.org/logstash/1.4/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash.list
 
+sudo wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo echo 'deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main' | sudo tee /etc/apt/sources.list.d/elasticsearch.list
+
 sudo apt-get update
-sudo apt-get -y install elasticsearch=1.1.1 logstash=1.4.2-1-2c0f5a1 nginx
+
+# Install Java, Elasticsearch, Logstash and Nginx
+sudo apt-get install -y openjdk-7-jre
+sudo apt-get install -y logstash
+sudo apt-get install -y elasticsearch
+sudo apt-get install -y nginx
+
+# Add Elasticsearch as a service
+sudo update-rc.d elasticsearch defaults 95 10
 
 # Install Kibana
 sudo mkdir /opt/kibana
