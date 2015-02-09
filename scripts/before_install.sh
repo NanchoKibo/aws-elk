@@ -20,6 +20,13 @@ sudo update-rc.d elasticsearch defaults 95 10
 
 # Install Kibana
 sudo mkdir /opt/kibana
+sudo mkdir /opt/kibana/kibana3
+sudo mkdir /opt/kibana/kibana4
+
 sudo curl -O https://download.elasticsearch.org/kibana/kibana/kibana-3.1.1.tar.gz
-sudo tar xvf kibana-3.1.1.tar.gz -C /opt/kibana --strip-components=1
+sudo tar xvf kibana-3.1.1.tar.gz -C /opt/kibana3 --strip-components=1
 sudo rm -f kibana-3.1.1.tar.gz
+
+sudo curl -O https://download.elasticsearch.org/kibana/kibana/kibana-4.0.0-beta3.tar.gz
+sudo tar xvf kibana-4.0.0-beta3.tar.gz -C /opt/kibana4 --strip-components=1
+sudo rm -f kibana-4.0.0-beta3.tar.gz
